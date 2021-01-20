@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const connection = require('./infra/connection');
+const Tables = require('./infra/tables');
 
 const appointments = require('./routes/appointmentsRoute');
 
@@ -8,7 +9,9 @@ connection.connect(error => {
   if (error) {
     console.log(error);
   } else {
-    console.log('Conectado com sucesso')
+    console.log('Conectado com sucesso');
+    Tables.init(connection);
+    
   }
 })
 
