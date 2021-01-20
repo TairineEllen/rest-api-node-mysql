@@ -1,7 +1,20 @@
 const express = require('express');
 const app = express();
+const connection = require('./infra/connection');
 
 const appointments = require('./routes/appointmentsRoute');
+
+connection.connect(error => {
+  if (error) {
+    console.log(error);
+  } else {
+    console.log('Conectado com sucesso')
+  }
+})
+
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.use('/', (req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
