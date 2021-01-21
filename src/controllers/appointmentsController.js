@@ -20,9 +20,15 @@ const updateById = (req, res) => {
   Appointment.update(id, info, res);
 }
 
+const deleteById = (req, res) => {
+  const id = parseInt(req.params.id);
+  Appointment.delete(id, res);
+}
+
 module.exports = {
   getAppointments,
   getById,
   addAppointment,
-  updateById
+  updateById,
+  deleteById
 };

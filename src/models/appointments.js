@@ -75,9 +75,20 @@ class Appointment {
       } else {
         res.status(200).send(results);
       };
-    })
-  }
+    });
+  };
 
+  delete(id, res) {
+    const sql = 'DELETE FROM Atendimentos WHERE  id = ?';
+
+    connection.query(sql, id, (error, results) => {
+      if (error) {
+        res.status(400).send(error);
+      } else {
+        res.status(200).send('Dados excluídos com sucesso');
+      };
+    });  
+  };
 };
 
 module.exports = new Appointment;
