@@ -62,6 +62,22 @@ class Appointment {
       };
     });
   };
+
+  update(id, info, res) {
+    const sql = 'UPDATE Atendimentos SET ? WHERE id = ?';
+    if (info.data) {
+      info.data = moment(info.data, 'DD/MM/YYYY').format('YYYY-MM-DD HH:MM:SS');
+    }
+    
+    connection.query(sql, [info, id], (error, results) => {
+      if (error) {
+        res.status(400).send(error);
+      } else {
+        res.status(200).send(results);
+      };
+    })
+  }
+
 };
 
 module.exports = new Appointment;

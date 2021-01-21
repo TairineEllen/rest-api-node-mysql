@@ -5,5 +5,6 @@ const controller = require('../controllers/appointmentsController');
 router.get('/', controller.getAppointments);
 router.get('/:id', controller.getById);
 router.post('/', controller.addAppointment);
+router.patch('/:id', controller.updateById);
 
 module.exports = router;

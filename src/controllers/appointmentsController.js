@@ -14,8 +14,15 @@ const addAppointment = (req, res) => {
   Appointment.add(appointment, res);
 };
 
+const updateById = (req, res) => {
+  const id = parseInt(req.params.id);
+  const info = req.body;
+  Appointment.update(id, info, res);
+}
+
 module.exports = {
   getAppointments,
   getById,
-  addAppointment
+  addAppointment,
+  updateById
 };
