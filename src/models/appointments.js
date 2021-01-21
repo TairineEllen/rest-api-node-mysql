@@ -33,7 +33,7 @@ class Appointment {
         if (error) {
           res.status(400).send(error);
         } else {
-          res.status(201).send(results);
+          res.status(201).send(appointment);
         };
       });
     };
@@ -67,13 +67,13 @@ class Appointment {
     const sql = 'UPDATE Atendimentos SET ? WHERE id = ?';
     if (info.data) {
       info.data = moment(info.data, 'DD/MM/YYYY').format('YYYY-MM-DD HH:MM:SS');
-    }
+    };
     
     connection.query(sql, [info, id], (error, results) => {
       if (error) {
         res.status(400).send(error);
       } else {
-        res.status(200).send(results);
+        res.status(200).send({ ...info, id });
       };
     });
   };
