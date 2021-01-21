@@ -6,8 +6,7 @@ const getAppointments = (req, res) => {
 
 const addAppointment = (req, res) => {
   const appointment = req.body;
-  Appointment.add(appointment);
-  res.send('Atendimento adicionado com sucesso.');
+  Appointment.add(appointment, res);
 };
 
 module.exports = {
