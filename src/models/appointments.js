@@ -43,10 +43,22 @@ class Appointment {
     const sql = 'SELECT * FROM Atendimentos';
 
     connection.query(sql, (error, results) => {
-      if (erro) {
+      if (error) {
         res.status(400).send(error);
       } else {
         res.status(200).send(results);
+      };
+    });
+  };
+
+  getById(id, res) {
+    const sql = `SELECT * FROM Atendimentos WHERE id = ${id}`;
+
+    connection.query(sql, (error, results) => {
+      if (error) {
+        res.status(400).send(error);
+      } else {
+        res.status(200).send(results[0]);
       };
     });
   };
