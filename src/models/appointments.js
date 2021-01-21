@@ -36,10 +36,19 @@ class Appointment {
           res.status(201).send(results);
         };
       });
+    };
+  };
 
-    }
+  list(res) {
+    const sql = 'SELECT * FROM Atendimentos';
 
-
+    connection.query(sql, (error, results) => {
+      if (erro) {
+        res.status(400).send(error);
+      } else {
+        res.status(200).send(results);
+      };
+    });
   };
 };
 

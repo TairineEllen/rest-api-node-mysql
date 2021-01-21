@@ -1,7 +1,7 @@
 const Appointment = require('../models/appointments');
 
 const getAppointments = (req, res) => {
-  res.send('Rota de atendimentos GET');
+  Appointment.list(res);  
 };
 
 const addAppointment = (req, res) => {
